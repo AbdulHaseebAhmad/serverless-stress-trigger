@@ -21,6 +21,16 @@ resource aws_iam_policy lambda_send_command_to_ssm_policy {
         #     aws_instance.ec2_instance.arn,
         #     data.aws_ssm_document.run_shell_script_document.arn
         # ]
+      },
+      {
+        Effect = "Allow"
+        Action = [
+          "sns:Publish"
+        ]
+        # Resource = "*"
+        Resource = [
+            aws_sns_topic.stress_updates_topic.arn
+        ]
       }
     ]
   })

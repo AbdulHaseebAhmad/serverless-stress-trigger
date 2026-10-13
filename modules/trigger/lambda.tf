@@ -12,6 +12,7 @@ resource aws_lambda_function lambda_function {
       ENVIRONMENT = var.env_name
       LOG_LEVEL   = "info"
       INSTANCE_ID = aws_instance.ec2_instance.id
+      SNS_TOPIC_ARN = aws_sns_topic.stress_updates_topic.arn
     }
   }
 
